@@ -105,6 +105,7 @@ export const getTrackDisplayName = (track: { name?: string, id: number, language
   // If the track name contains detailed information, use it as-is
   if (track.name && (track.name.includes('DDP') || track.name.includes('DTS') || track.name.includes('AAC') ||
     track.name.includes('EAC3') || track.name.includes('AC3') || track.name.includes('TrueHD') ||
+    track.name.includes('Dolby') || track.name.includes('FLAC') || track.name.includes('Opus') ||
     track.name.includes('Kbps') || track.name.includes('kbps') || track.name.includes('Atmos') ||
     track.name.includes('5.1') || track.name.includes('7.1') || track.name.includes('6.1') || track.name.includes('2.0') ||
     track.name.includes('SDH') || track.name.includes('Forced') || track.name.includes('~'))) {
