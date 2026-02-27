@@ -124,7 +124,6 @@ export const getTrackDisplayName = (track: { name?: string, id: number, language
   }
 
   // Handle generic VLC track names like "Audio 1", "Track 1"
-  const genericTrackMatch = track.name.match(/^(Audio|Track)\s+(\d+)$/i);
   if (genericTrackMatch) {
     return `Audio ${genericTrackMatch[2]}`;
   }
