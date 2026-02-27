@@ -122,6 +122,13 @@ export const buildExoAudioTrackName = (t: any, i: number): string => {
         rawTitle = rawTitle.replace(/\|ch:\d+$/, '').trim();
     }
     if (rawTitle) {
+        // Prepend language if available and not already in the title
+        if (t.language) {
+            const lang = EXOPLAYER_LANG_MAP[t.language.toLowerCase()] ?? t.language.toUpperCase();
+            if (!rawTitle.toLowerCase().includes(lang.toLowerCase())) {
+                parts.push(lang);
+            }
+        }
         parts.push(rawTitle);
     } else if (t.language) {
         parts.push(EXOPLAYER_LANG_MAP[t.language.toLowerCase()] ?? t.language.toUpperCase());
@@ -147,6 +154,13 @@ export const buildExoSubtitleTrackName = (t: any, i: number): string => {
     const parts: string[] = [];
     const titleLower = (t.title ?? '').toLowerCase();
     if (t.title && t.title.trim()) {
+        // Prepend language if available and not already in the title
+        if (t.language) {
+            const lang = EXOPLAYER_LANG_MAP[t.language.toLowerCase()] ?? t.language.toUpperCase();
+            if (!t.title.toLowerCase().includes(lang.toLowerCase())) {
+                parts.push(lang);
+            }
+        }
         parts.push(t.title.trim());
     } else if (t.language) {
         parts.push(EXOPLAYER_LANG_MAP[t.language.toLowerCase()] ?? t.language.toUpperCase());
